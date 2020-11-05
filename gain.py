@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Décomposition des cartes de la main du joueur
 def decompose_jeu(tirage):
     dic = {}
     indices = range(len(tirage))
@@ -12,7 +13,7 @@ def decompose_jeu(tirage):
         couleur.append(dic[x][1])
     return valeur, couleur
 
-
+# Conversion des cartes royales en numérique
 def convert_carte(liste):
     for e,i in zip(liste, range(5)):
         try:
@@ -30,8 +31,8 @@ def convert_carte(liste):
                 continue
     return liste
 
-#Paire : 2 cartes identiques => 1 fois la mise
-
+# COMBINAISONS GAGNANTES
+# Paire : 2 cartes identiques => 1 fois la mise
 def paire(tirage):
     valeur, couleur = decompose_jeu(tirage)
     val_1 = pd.Series(valeur)
@@ -45,8 +46,7 @@ def paire(tirage):
         return False
    
     
-#Double Paire : deux fois 2 cartes identiques => 2 fois la mise
-
+# Double Paire : deux fois 2 cartes identiques => 2 fois la mise
 def double_paire(tirage):
     valeur, couleur = decompose_jeu(tirage)
     val_1 = pd.Series(valeur)
@@ -60,8 +60,7 @@ def double_paire(tirage):
         return False
     
 
-#Brelan : 3 cartes identiques => 3 fois la mise
-
+# Brelan : 3 cartes identiques => 3 fois la mise
 def brelan(tirage):
     valeur, couleur = decompose_jeu(tirage)
     val_1 = pd.Series(valeur)
@@ -75,8 +74,7 @@ def brelan(tirage):
         return False
     
     
-#Quinte : 5 cartes identiques => 4 fois la mise
-
+# Quinte : 5 cartes identiques => 4 fois la mise
 def quinte(tirage):
     valeur, couleur = decompose_jeu(tirage)
     valeur = convert_carte(valeur)
@@ -91,8 +89,7 @@ def quinte(tirage):
         return False
 
 
-#Flush : 5 cartes de la même couleur => 6 fois la mise
-
+# Flush : 5 cartes de la même couleur => 6 fois la mise
 def flush(tirage):
     valeur, couleur = decompose_jeu(tirage)
     val_1 = pd.Series(couleur)
@@ -102,8 +99,7 @@ def flush(tirage):
         return False
     
     
-#Full : 1 paire + 1 brelan => 9 fois la mise
-
+# Full : 1 paire + 1 brelan => 9 fois la mise
 def full(tirage):
     valeur,couleur = decompose_jeu(tirage)
     val_1 = pd.Series(valeur)
@@ -117,8 +113,7 @@ def full(tirage):
         return False
     
 
-#Carré : 4 cartes identiques => 25 fois la mise
-
+# Carré : 4 cartes identiques => 25 fois la mise
 def carre(tirage):
     valeur,couleur = decompose_jeu(tirage)
     val_1 = pd.Series(valeur)
@@ -133,9 +128,6 @@ def carre(tirage):
     
 
 #Quinte Flush : 1 quinte de la même couleur => 50 fois la mise
-
-tirage = ['5-h', '7-h', '6-h', '8-h', '4-h']
-
 def quinte_flush(tirage):
     valeur, couleur = decompose_jeu(tirage)
     valeur = convert_carte(valeur)
@@ -150,8 +142,7 @@ def quinte_flush(tirage):
         return False
     
 
-#Quinte Flush Royale : 1 quinte flush avec as, roi, dame, valet, 10 => 250 fois la mise.
-
+# Quinte Flush Royale : 1 quinte flush avec as, roi, dame, valet, 10 => 250 fois la mise.
 def quinte_flush_royale(tirage):
     valeur_gagnante = ['10' , 'J', 'Q' , 'K' , 'A']
     valeur, couleur = decompose_jeu(tirage)
@@ -160,7 +151,7 @@ def quinte_flush_royale(tirage):
     else:
         return False
     
-    
+# Disctribution des gains et alertes au joueurs
 def gain(tirage, mise):
     if quinte_flush_royale(tirage) == True :
         gain = mise*250
@@ -195,7 +186,7 @@ def gain(tirage, mise):
         
     return gain, message
 
-
+# Déroulement de la partie avec la mise et les gains
 def partie(mise, bankroll):
     bankroll = bankroll - mise
     main = machine()

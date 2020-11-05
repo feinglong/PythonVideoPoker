@@ -1,8 +1,7 @@
 from machine import *
 from gain import *
 
-
-
+# Déroulement du jeu
 def video_poker():
     bankroll = int(input("Insert money : "))
     mise_joueur = int(input("Add your bet : "))
@@ -20,6 +19,6 @@ def video_poker():
             while bankroll - mise_joueur < 0 :
                 print("Bet too high! please try again.")
                 mise_joueur = int(input("Add you bet : "))
-                
-                
+
+# Lancement du jeu 
 video_poker()
