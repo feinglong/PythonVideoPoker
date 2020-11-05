@@ -1,4 +1,6 @@
 import pandas as pd
+from machine import *
+
 
 # Décomposition des cartes de la main du joueur
 def decompose_jeu(tirage):
