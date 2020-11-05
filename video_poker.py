@@ -1,12 +1,6 @@
 from machine import *
 from gain import *
 
-def partie(mise, bankroll):
-    bankroll = bankroll - mise
-    main = machine()
-    g, resultat = gain(main, mise)
-    bankroll += g
-    return resultat, bankroll
 
 
 def video_poker():

@@ -194,3 +194,11 @@ def gain(tirage, mise):
         message = "Lose... try again!"
         
     return gain, message
+
+
+def partie(mise, bankroll):
+    bankroll = bankroll - mise
+    main = machine()
+    g, resultat = gain(main, mise)
+    bankroll += g
+    return resultat, bankroll
