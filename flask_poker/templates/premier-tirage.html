@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Casino Royal Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        {% if bankroll and mise_joueur %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <span>Bank : {{ bankroll }} €</span>
+            </li>
+            <li class="nav-item">
+                <span>Bet : {{ mise_joueur }} €</span>
+            </li>
+        </ul>
+
+        {% endif %}
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <h1>First draw</h1>
+
+    <form action="/second-tirage" method="post">
+        <div class="form-group">
+            <div class="row">
+                {% for carte in pt_jeu %}
+                    <div class="carte-group">
+                        <img 
+                            src="{{ url_for('static', filename='cartes/'+carte+'.svg') }}" 
+                            alt="carte"
+                            class="carte-img"
+                        >
+                        <div class="text-center mt-2">
+                            <label for="{{ carte }}"> Keep ?</label>
+                            <input 
+                                type="checkbox" 
+                                name="{{ carte }}" 
+                                id="{{ carte }}"
+                                checked
+                            >
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <button type="submit" class="btn btn-success">Draw</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock body %}

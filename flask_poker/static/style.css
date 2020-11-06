@@ -1,0 +1,23 @@
+.carte-img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+}
+
+.nav-item {
+    margin-right: 50px;
+}
+
+.nav-item span {
+    font-size: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.carte-group {
+    display: flex;
+    flex-direction: column;
+}
+
