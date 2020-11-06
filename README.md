@@ -8,4 +8,4 @@ Scripts du jeu vidéo poker à faire pour le projet python (2020)
 
 #### Dossier "flask_poker" :
 
-Vidéo poker avec l'interface (2020)
+Vidéo poker avec Flask (2020)
