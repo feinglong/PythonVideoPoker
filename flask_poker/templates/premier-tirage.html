@@ -31,13 +31,14 @@
             <div class="row">
                 {% for carte in pt_jeu %}
                     <div class="carte-group">
-                        <img 
-                            src="{{ url_for('static', filename='cartes/'+carte+'.svg') }}" 
-                            alt="carte"
-                            class="carte-img"
-                        >
                         <div class="text-center mt-2">
-                            <label for="{{ carte }}"> Keep ?</label>
+                            <label for="{{ carte }}">
+                                <img 
+                                    src="{{ url_for('static', filename='cartes/'+carte+'.svg') }}" 
+                                    alt="carte"
+                                    class="carte-img"
+                                >
+                            </label>
                             <input 
                                 type="checkbox" 
                                 name="{{ carte }}" 
