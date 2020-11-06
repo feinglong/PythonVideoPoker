@@ -4,8 +4,8 @@
 
 #### Dossier "scripts_poker" :
 
-Scripts du jeu vidéo poker à faire pour le projet python (2020)
+Scripts du jeu vidéo poker à faire pour le projet python
 
 #### Dossier "flask_poker" :
 
-Vidéo poker avec Flask (2020)
+Vidéo poker avec Flask
